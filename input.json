@@ -1,0 +1,75 @@
+{
+  "doc": {
+    "borrower": "",
+    "co_borrower": ""
+  },
+  "mort": {
+    "sales_contact_price": "",
+    "contact_price": "",
+    "borrower_investment": "",
+    "other_1": "",
+    "other_2": ""
+  },
+  "loan_plan": {
+    "line_credit": false,
+    "term": false,
+    "modified_term": false,
+    "temure": false,
+    "modified_temure": false,
+    "SDLSO": false,
+    "undecided": false
+  },
+  "purpose_of_loan": {
+    "additional_income": false,
+    "home_improvements": false,
+    "payment_of_taxes": false,
+    "payment_of_insurance": false,
+    "leisure": false,
+    "medical": false,
+    "ext_forward_mort": false,
+    "other": {
+      "checked": false,
+      "specification": ""
+    }
+  },
+
+  "features": {
+    "special_loan_features": false,
+    "index_type": false,
+    "arm_type": false,
+    "fixed_rated_type": false,
+    "equity_share": false,
+    "libor": false,
+    "monthly": false,
+    "open_end": false,
+    "other_1": "",
+    "other_2": "",
+    "other_3": "",
+    "other_4": false,
+    "explanation": "",
+    "loan_origination_fee": ""
+  },
+
+  "prim_property_info" :  {
+      "subject_prop_addr" : "",
+      "legal_desc" : "",
+      "prop_title_list" : "",
+      "no_units" : "",
+      "year_built" : "",
+      "est_appr_val" : "",
+      "primary_resident" : true,
+      "investement_resident" : false,
+      "prop_title": {
+        "fee_sample" : false,
+        "life_estate" : false,
+        "leasehold" : false,
+        "leasehold_exp_date" : false
+      
+      },
+      "check_title_help" : {
+        "inter_vivos" : false,
+        "irrevocable_trust" : false,
+        "revocable_trust" : false
+      }
+  }
+}
