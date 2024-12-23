@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -57,13 +56,50 @@
         }
     </style>
     <style>
+        @page {
+            size: A4;
+            margin: 10px 10px 60px 10px;
+        }
 
-       @page { size: A4; margin: 0cm }
+
+        @page {
+            @bottom-center {
+                content: "Page " counter(page) " of " counter(pages);
+                font-size: 10px;
+                color: #000;
+            }
+
+            @bottom-right {
+                content: "Fannie Mae Form 1009 05/2010";
+                font-size: 10px;
+                font-weight: bold;
+                color: #000;
+            }
+
+
+        }
+
+        .page-break {
+            page-break-before: always;
+            /* Ensures the content starts on a new page */
+            break-before: page;
+            /* Modern property */
+        }
+
         body {
-            margin: 20px;
+            margin: 0px;
             margin-top: 50px;
-            font-family: FF1;
+            font-family: economy;
             -webkit-print-color-adjust: exact;
+            /* width: 794px; */
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .mr-2 {
+            margin-right: 10px;
         }
 
         .header {}
@@ -73,14 +109,23 @@
             margin-bottom: 10px;
         }
 
+        .full-text,
+        p,
+        div {
+            font-size: 11px;
+        }
+
+        .bold {
+            font-weight: 900;
+        }
+
         .boder-bottom {
             border-bottom: 2px solid black;
-
         }
 
         .title-text {
             text-align: center;
-            font-size: 22px;
+            font-size: 18px;
             font-family: FF0;
             margin: 5px;
         }
@@ -93,10 +138,55 @@
 
         .input-1 {
             border-bottom: 2px solid black;
-            width: 100px;
+            width: 50px;
             margin-right: 10px;
             text-align: center;
             word-wrap: break-word;
+            display: inline-block;
+        }
+
+        .input-2 {
+            border-bottom: 2px solid black;
+            width: 40px;
+            margin-right: 10px;
+            text-align: center;
+            word-wrap: break-word;
+            display: inline-block;
+        }
+
+        .input-3 {
+            border-bottom: 2px solid black;
+            width: 30px;
+            margin-right: 10px;
+            text-align: center;
+            word-wrap: break-word;
+            display: inline-block;
+        }
+
+        .float-input {
+            border-bottom: 2px solid black;
+            width: 50px;
+            margin-right: 10px;
+            text-align: center;
+            word-wrap: break-word;
+            display: inline-block;
+            float: right;
+            margin-top: -10px;
+            min-height: 10px;
+        }
+
+        .w-200 {
+            width: 100px;
+        }
+
+        .input-area span {
+            display: inline-block;
+        }
+
+        .float-right {
+            float: right;
+            margin-left: 0;
+            margin-top: 10px;
         }
 
         .input-full {
@@ -109,14 +199,33 @@
             min-height: 16px;
         }
 
-        .bool-input {
+        .comment {
+            font-weight: bold;
+            font-size: 9px;
+        }
+
+        .bool-input,
+        .bool-input-larger {
             border-bottom: 2px solid black;
-            width: 40px;
+            min-width: 40px;
             margin-right: 10px;
             font-size: 15px;
-            font-weight: 600;
             text-align: center;
             min-height: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            display: inline-block;
+            max-width: 40px;
+        }
+
+        .text-area {
+            padding: 5px 0px;
+            font-weight: bold;
+        }
+
+        .bool-input-larger {
+            min-width: 80px;
         }
 
         table {
@@ -127,9 +236,47 @@
         th,
         td {
             border: 1px solid black;
-            /* Creates inner borders between cells */
-            padding: 4px 3px;
             text-align: left;
+        }
+
+        .h-35 {
+            height: 25px;
+        }
+
+        .h-10 {
+            height: 10px;
+        }
+
+        .p-wrapper {
+            padding: 1px 10px;
+        }
+
+        hr {
+            margin: 0;
+        }
+
+        .margin-left-right {
+            margin-top: 15px;
+        }
+
+        .right-border {
+            border-right: 1px solid black;
+        }
+
+        .w-3-inline {
+            display: inline-block;
+            width: 32%;
+            vertical-align: top;
+        }
+
+        .w-4-inline {
+            display: inline-block;
+            width: 24%;
+            vertical-align: top;
+        }
+
+        .table-no-border td {
+            border: none;
         }
 
         .flex-row {
@@ -140,25 +287,29 @@
             gap: 0;
         }
 
-        .flex-35{
-            flex: 0 0 35%;
-        }
-        .flex-40{
-            flex: 0 0 40%;
-        }
-
-        .flex-30{
-            flex: 0 0 30%;
-        }
-
-        .flex-1{
+        .flex-row div {
             flex: 1;
         }
 
-        .flex-60{
+        .flex-35 {
+            flex: 0 0 35%;
+        }
+
+        .flex-40 {
+            flex: 0 0 40%;
+        }
+
+        .flex-30 {
+            flex: 0 0 30%;
+        }
+
+        .flex-1 {
+            flex: 1;
+        }
+
+        .flex-60 {
             flex: 0 0 60%;
         }
-        
 
         .header-text {
             background: black;
@@ -166,6 +317,21 @@
             text-align: center;
             padding: 5px;
             display: block;
+        }
+
+        .info-table .table-header {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .info-table .table-header td {
+            text-align: center;
+        }
+
+        .info-table td {
+            vertical-align: top;
         }
 
         .bold-value {
@@ -184,6 +350,8 @@
             border: 2pt solid #525252;
             margin: 0px 5px;
             padding: 0px 2px;
+            font-family: sans-serif;
+            font-weight: 900;
         }
 
         /* .bool-input {
@@ -196,399 +364,636 @@
             padding: 3px 0px;
         }
 
+        .under-line {
+
+            border-bottom: 2pt solid black;
+        }
+
         .txt-center {
             text-align: center;
             word-wrap: break-word;
+        }
+
+        .logo-img {
+            width: 128px;
+            height: 32.47px;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .flex-gap {
+            display: flex;
+        }
+
+        .flex-gap>div {
+            margin-right: 50px;
+        }
+
+        .flex-gap:last-child {
+            margin-right: 0;
+        }
+
+        .no-wrap {
+            white-space: nowrap;
         }
     </style>
 </head>
 
 <body>
-    <div class="logo-container">
-        <img src="data:image/png;base64,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"
-        width="128" height="32.47" />
-    </div>
-    <div class="full-container boder-bottom">
-        <p class="title-text">Residential Loan Application for Reverse Mortgages</p>
-    </div>
-    <div class="full-container">
-        <p>
-            This application is designed to be completed by the applicant(s) with the lender’s assistance. Applicants should complete this form as “Borrower” or “Co-Borrower”, as applicable. Co-Borrower information must be provided for a person other than the Borrower
-            (including the Borrower’s spouse) who <span class="rect-ckbox">&nbsp;&nbsp;&nbsp;</span> is a co-owner of the real property that will secure the loan, or <span class="rect-ckbox">&nbsp;&nbsp;&nbsp;</span> has or could have community
-            property rights pursuant to state law in the real property that will secure the loan.
-        </p>
-        <p>
-            If this is an application for joint credit, Borrower and Co-Borrower each agree that we intend to apply for joint credit (sign below):
-        </p>
-    </div>
-    <div class="full-container flex-row tb-border">
-        <div style="width: 50%;">
-            Borrower 
+    <page>
+        <div class="logo-container">
+            <img src="data:image/png;base64,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"
+                class="logo-img">
         </div>
-        <div style="width: 50%;">
-            Co-Borrower 
+        <div class="full-container boder-bottom">
+            <p class="title-text">Residential Loan Application for Reverse Mortgages</p>
         </div>
-    </div>
-    <div>
-        <table style="margin-bottom: 30px;">
-            <thead>
-                <tr>
-                    <div class="header-text">
-                        I. Type of Mortgage and Terms of Loan
-                    </div>
-                </tr>
-            </thead>
+        <div class="full-container" style="padding: 5px 10px;width: 100%;box-sizing: border-box;">
+            <p class="full-text"> This application is designed to be completed by the applicant(s) with the lender’s
+                assistance. Applicants should complete this form as “Borrower” or “Co-Borrower”, as applicable.
+                Co-Borrower
+                information must be provided for a person other than the Borrower (including the Borrower’s spouse) who
+                <span class="rect-ckbox">&nbsp;&nbsp;&nbsp;</span> is a co-owner of the real property that will secure
+                the loan, or <span class="rect-ckbox">&nbsp;&nbsp;&nbsp;</span> has or could have community property
+                rights pursuant to state law in the
+                real property that will secure the loan.
+            </p><br>
+            <p> If this is an application for joint credit, Borrower and Co-Borrower each agree that we intend to apply
+                for
+                joint credit (sign below): </p>
+        </div>
+        <div class="full-container flex-row tb-border" style="padding: 5px 10px;width: 100%;box-sizing: border-box;">
+            <div> Borrower <span style="font-weight: bold;">Matt Lafoy</span>
+            </div>
+            <div> Co-Borrower <b>Miguel</b>
+            </div>
+        </div>
+
+        <table style="margin-bottom: 30px;margin-top: 5px;" class="info-table">
+
             <tbody>
+                <tr class="table-header">
+                    <td colspan="3">
+                        I. Type of Mortgage and Terms of Loan
+                    </td>
+                </tr>
                 <tr>
-                    <td rowspan="2">
-                        <div>
-                            Mortgage Applied for:
-                        </div>
-                        <div>
-                            <div style="margin-left: 40px;">
-                                <div>FHA Traditional HECM*</div>
-                                <div>FHA Refinance HECM*</div>
-                                <div>FHA Purchase HECM*</div>
+                    <td width="30%" class="input-area">
+                        <div class="p-wrapper">
+                            <p> Mortgage Applied for: </p>
+
+
+                            <p><span class="input-1"></span>FHA Traditional HECM*</p>
+                            <p><span class="input-1"></span>FHA Refinance HECM*</p>
+                            <p><span class="input-1"></span>FHA Purchase HECM*</p>
+
+                            <div style="margin-left: 30px;">
+                                <p>$ <span class="input-1">100</span>
+                                    Sales Contract Price</p>
+                                <p>$ <span class="input-1">100</span> Land Installment </p>
+                                <p>$ <span class="input-1">100</span> <span>Sales Contract
+                                        Price
+                                        <br> Land Installment </span></p>
+                                <p>
+                                    $ <span class="input-1">100</span>
+                                    Borrower’s Investment
+                                </p>
                             </div>
-                        </div>
-                        <div style="display: flex;;">
-                            <div class="input-1"></div>
-                            <div>Sales Contract Price
-                                <br> Land Installment</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="input-1"></div>
-                            <div>Contract Price</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="input-1"></div>
-                            <div>Borrower’s Investment</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="input-1" style="border: none;display: flex;">
-                                <div class="txt-center" style="border-bottom: 1px solid black;  width: 45px; margin-right: 20px;">
-                                    </div>
+
+                            <p>
+                                <span class="input-1"></span>
                                 <span>Other</span>
+                                <span class="txt-center"
+                                    style="border-bottom: 1px solid black;  width: 100px; margin-right: 20px;">
+                                    Other
+                                </span>
+                            </p>
+                            <div>
+                                <div style="margin-left: 120px;">(Specify)</div>
                             </div>
-                            <div class="txt-center" style="border-bottom: 1px solid black;  width: 150px; margin-right: 20px;">
-                                </div>
-                        </div>
-                        <div>
-                            <div style="margin-left: 40%;">(Specify)</div>
-                        </div>
-                        <div style="text-align: le; font-size: 10px; font-weight: 700;">
-                            *Complete HUD/VA Addendum HUD 92900-A
-                        </div>
-                    </td>
-                    <td>FHA Case No. (HECM):</td>
-                    <td>Lender Case No.:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div>
-                            <div style="text-align: left;">
-                                Loan Payment Plans:
-                            </div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Line of Credit</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Term</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Modified Term</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Tenure</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Modified Tenure</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div style="text-align: left;">Single Disbursement Lump Sum Option
-                            </div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Undecided</div>
+                            <br />
+                            <p class="comment"> *Complete HUD/VA Addendum HUD 92900-A </p>
                         </div>
                     </td>
                     <td>
-                        <div>
-                            <div style="text-align: left;">
-                                Purpose of Loan: (Check all that apply)
-                            </div>
+                        <div class="under-line p-wrapper">FHA Case No. (HECM):</div>
+                        <div class="p-wrapper">
+                            <p>Loan Payment Plans:</p>
+                            <p>
+                                <span class="input-1">  </span>
+                                Line of Credit
+                            <p>
+                                <span class="input-1">  </span>
+                                Term
+                            <p>
+                                <span class="input-1">  </span>
+                                Modified Term
+                            <p>
+                                <span class="input-1">  </span>
+                                Tenure
+                            <p>
+                                <span class="input-1">  </span>
+                                Modified Tenure
+                            <p>
+                                <span class="input-1">  </span>
+                                Undecided
                         </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Additional Income</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Home Improvements</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Payment of Taxes</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Payment of Insurance</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Leisure</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div style="text-align: left;">Medical</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input"> </div>
-                            <div>Extinguish Forward Mortgage</div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="bool-input" > </div>
-                            <div>Other</div>
-                            <div class="input-block"></div>
-
-                            <!-- <div class="input-block" style="border: none;display: flex;">
-                                    <div style="border-bottom: 1px solid black;  width: 80px; margin-right: 20px;"></div>
-                                    <span>Other</span>
-                                </div>
-                                <div style="border-bottom: 1px solid black;  width: 150px; margin-right: 20px;"></div> -->
-                        </div>
-                        <div>
-                            <div style="margin-left: 40%;">(Specify)</div>
+                    </td>
+                    <td style="width: 33%;">
+                        <div class="under-line p-wrapper">Lender Case No.:</div>
+                        <div class="p-wrapper">
+                            <p>Purpose of Loan: (Check all that apply)
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Additional Income
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Home Improvements
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Payment of Taxes
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Payment of Insurance
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Leisure
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Medical
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Extinguish Forward Mortgage
+                            </p>
+                            <p>
+                                <span class="input-3">  </span>
+                                Other <span class="input-1 w-200" style="margin-left: 10px;">  </span>
+                            </p>
+                            <div style="margin-left: 130px;">(Specify)</div>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="width: 65%;">
-                        <div>Features (Check the applicable boxes):</div>
-                        <div class="flex-row">
-                            <div class="flex-row flex-40">
-                                <div class="flex-1">
-                                    <div>Special Loan Features:</div>
-                                    <div>Index Type:</div>
-                                    <div>ARM Type:</div>
-                                    <div>Fixed Rated Type:</div>
-                                </div>
-                                
-                                 <div>
-                                        <div class="bool-input"> </div>
-                                        <div class="bool-input">  </div>
-                                        <div class="bool-input"> </div>
-                                        <div class="bool-input"> </div>
-                                    </div>
-                            </div>
-                            <div class="flex-30">
-                                <div class="flex-row">
-                                    <div class="flex-1">
-                                        <div>Equity Share</div>
-                                        <div>LIBOR</div>
-                                        <div>Monthly</div>
-                                        <div>Open End</div>
-                                    </div>
-                                    <div>
-                                    <div class="bool-input"> </div>
-                                    <div class="bool-input"> </div>
-                                    <div class="bool-input"> </div>
-                                    <div class="bool-input"> </div>
-                                </div>
-                                   
-                                </div>
-                            </div>
-                            <div class="flex-30">
-
-                                <div class="flex-row">
-                                    <div>Other (specify)</div>
-                                    <div class="input-full">
-
-                                        
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p> Features (Check the applicable boxes): </p>
+                            <div style="margin-top: 5px;">
+                                <div class="w-3-inline">
+                                    <span>
+                                        Special Loan Features
+                                    </span>
+                                    <div class="input-2 float-right">  
                                     </div>
                                 </div>
-                                <div class="flex-row">
-                                    <div>Other (specify)</div>
-                                    <div class="input-full"></div>
+                                <div class="w-3-inline">
+                                    <p>
+                                        <span>
+                                            Equity Share
+                                        </span>
+                                        <span class="input-2 float-right">  </span>
+                                    </p>
                                 </div>
-                                <div class="flex-row">
-                                    <div>Annual
-                                        <br /> Closed End</div>
-                                    <div class="input-full"></div>
+                                <div class="w-3-inline">
+                                    <p>
+                                        <span>
+                                            Other (specify)
+                                        </span>
+                                        <span class="input-2 float-right">  </span>
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex-row">
-                            <div class="flex-row flex-40">
-                                <div class="flex-1">
-                                    <div>Other:</div>
+                            <div>
+                                <div class="w-3-inline">
+                                    <span>
+                                        Index Type:
+                                    </span>
+                                    <div class="input-2 float-right">  
+                                    </div>
+                                </div>
+                                <div class="w-3-inline">
+                                    <p>
+                                        <span>
+                                            LIBOR
+                                        </span>
+                                        <span class="input-2 float-right">  </span>
+                                    </p>
+                                </div>
+                                <div class="w-3-inline">
+                                    <p>
+                                        <span>
+                                            Other (specify)
+                                        </span>
+                                        <span class="input-2 float-right">  </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="w-3-inline">
+                                    <span>
+                                        ARM Type:
+                                    </span>
+                                    <div class="input-2 float-right">  
+                                    </div>
+                                </div>
+                                <div class="w-3-inline">
+                                    <p>
+                                        <span>
+                                            Monthly
+                                        </span>
+                                        <span class="input-2 float-right">  </span>
+                                    </p>
+                                </div>
+                                <div class="w-3-inline">
+                                    <p>
+                                        <span>
+                                            Annual
+                                        </span>
+                                    </p>
                                 </div>
                                 <div>
-                                    <div class="bool-input">False</div>
+                                    <div class="w-3-inline">
+                                        <span>
+                                            Fixed Rate Type:
+                                        </span>
+                                        <div class="input-2 float-right">  
+                                        </div>
+                                    </div>
+                                    <div class="w-3-inline">
+                                        <p>
+                                            <span>
+                                                Open End
+                                            </span>
+                                            <span class="input-2 float-right">  </span>
+                                        </p>
+                                    </div>
+                                    <div class="w-3-inline">
+                                        <p>
+                                            <span>
+                                                Closed End
+                                            </span>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex-row flex-60">
-                                <div class="flex-row" style="width: 100%;">
-                                    <div>Explain</div>
-                                    <div class="input-full"></div>
+                                <div>
+                                    <div class="w-3-inline">
+                                        <span>
+                                            Other:
+                                        </span>
+                                        <div class="input-2 float-right">  
+                                        </div>
+                                    </div>
+                                    <div class="w-3-inline" style="width: 66%;">
+                                        <p>
+                                            <span>
+                                                Explain
+                                            </span>
+                                            <span class="input-2 float-right" style="width:80%">  </span>
+                                        </p>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </td>
                     <td>
-                        <div class="flex-row">
-                            <div class="input-block bold-value"></div>
-                            <div class="bold-value">Loan Origination Fee</div>
+                        <div class="p-wrapper">
+                            <p style="margin-top: 15px;">$ <span
+                                    class="input-1 w-200"></span>
+                                Loan Origination Fee </p>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <table>
-            <thead>
-                <tr>
-                    <div class="header-text">
-                        II. Primary Residence Property Information
-                    </div>
-                </tr>
-            </thead>
+        <table style="margin-bottom: 30px;" class="info-table">
             <tbody>
-                <tr>
-                    <td colspan="3">
-                        <div>
-                            Subject Property Address (street, city, state, county, and ZIP code):
-                        </div>
-                        <div class="bold-value">
-                            
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div>
-                            Legal Description of Subject Property (attach description if necessary):
-                        </div>
-                        <div class="bold-value">
-                            TBD
-                            
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div>
-                            Property Title is Held in These Names (please list all names on property title):
-                        </div>
-                        <div class="bold-value">
-                            
-                        </div>
+                <tr class="table-header">
+                    <td class="p-wrapper">
+                        II. Primary Residence Property Information
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div>No. of Units:</div>
-                        <div class="bold-value"></div>
-                    </td>
-                    <td>
-                        <div>Year Built:</div>
-                        <div class="bold-value"> </div>
-                    </td>
-                    <td>
-                        <div>Estimate of Appraised Value:
+                        <div class="p-wrapper">
+                            <p>Subject Property Address (street, city, state, county, and ZIP code):</p>
+                            <p class="text-area h-35">
+                                Subject Property Address
+                            </p>
                         </div>
-                        <div class="bold-value">
+                        <hr />
+                        <div class="p-wrapper">
+                            <p>Legal Description of Subject Property (attach description if necessary):</p>
+                            <p class="text-area h-35">
+                                Legal Description
+                            </p>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div style="display: flex; justify-content: space-between;">
-                            <div>
-                                Residence Type:
+                        <hr />
+                        <div class="p-wrapper">
+                            <p>Property Title is Held in These Names (please list all names on property title): </p>
+                            <p class="text-area h-35">
+                                 Property Title List
+                            </p>
+                        </div>
+                        <hr style="margin: 0;" />
+                        <div class="p-wrapper" style="padding: 0;">
+                            <div class="w-3-inline right-border" style="width: 15%;">
+                                <div class="p-wrapper">
+                                    No. of Units:
+                                    <p class="text-area h-15">
+                                        No Units
+                                    </p>
+                                </div>
                             </div>
-                            <div class="flex-row">
-                                <div class="bool-input">x</div>
-                                <div>Primary Residence </div>
+                            <div class="w-3-inline right-border" style="width: 25%;">
+                                <div class="p-wrapper">
+                                    Year Built:
+                                    <p class="text-area h-15">
+                                        Year Built
+                                    </p>
+                                </div>
                             </div>
-                            <div class="flex-row">
-                                <div class="bool-input"> </div>
-                                <div>Investment Property </div>
+                            <div class="w-3-inline" style="width: 58%;">
+                                <div class="p-wrapper">
+                                    Estimate of Appraised Value:
+                                    <p class="text-area h-15">
+                                        Estimate of Appraised Value
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <div style="display: flex; justify-content: space-between;">
-                            <div>
-                                Property Title
-                            </div>
-                            <div class="flex-row">
-                                <div class="bool-input"> </div>
-                                <div>Fee Simple </div>
-                            </div>
-                            <div class="flex-row">
-                                <div class="bool-input">
+                        <hr style="margin: 0;">
+                        <div>
+                            <div class="p-wrapper">
+                                <div class="w-3-inline" style="width: 20%;">
+                                    <span>
+                                        Residence <br> Type:
+                                        <span class="float-input">x
+                                        </span>
+                                    </span>
 
-                                     
                                 </div>
-                                <div>Life Estate </div>
-                            </div>
-                            <div class="flex-row">
-                                <div class="bool-input">
-                                     
+                                <div class="w-3-inline" style="width: 20%;">
+                                    <span>
+                                        Primary <br> Residence:
+                                    </span>
+                                    <span class="float-input"> 
+                                    </span>
                                 </div>
-                                <div>Leasehold</div>
+                                <div class="w-3-inline" style="width: 58%;">
+                                    <p>
+                                        <span>
+                                            Investment Property
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div style="display: flex; justify-content: space-between;">
+                        <hr>
+                        <div class="p-wrapper">
                             <div>
-                                Held As:
+                                <div class="w-4-inline" style="width: 20%;">
+                                    <span>
+                                        Property Title <br> Held As:
+                                    </span>
+                                    <span class="float-input"> 
+                                        
+                                    </span>
+                                </div>
+                                <div class="w-4-inline" style="width: 20%;">
+                                    <span>
+                                        Fee <br> Simple
+                                    </span>
+                                    <span class="float-input">  
+                                    </span>
+                                </div>
+                                <div class="w-4-inline" style="width: 29%;">
+                                    <span>
+                                        Life Estate
+                                    </span>
+                                </div>
+                                <div class="w-4-inline" style="width: 18%;"> 
+                                    <span class="input-1" style="margin-top: 15px;">
+                                    </span>
+                                    <span>
+                                        Leasehold
+                                    </span>
+                                </div>
                             </div>
-                            <div class="flex-row">
-                                <div class="bool-input"> </div>
-                                <div>Leasehold Expiration Date
+                            <div style="margin-left: 70%;">
+                                <span class="input-1"> 
+                                    
+                                </span>
+                                <span>
+                                    Leasehold Expiration Date
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="p-wrapper">
+                            <div>
+                                <div class="w-3-inline" style="width: 70%;">
+                                    <span>
+                                        Check if title is also held as:
+                                    </span>
+                                    <span class="input-2" style="width: 100px;">  
+                                    </span>
+                                    <i>Inter Vivos</i> (Living) Trust
+                                </div>
+                                <div class="w-3-inline" style="width: 29%;">
+                                    <span class="input-1">  
+                                    </span>
+                                    <span>
+                                        Irrevocable Trust
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div style="margin-left: 70%;">
+                                <span class="input-1">  
+                                </span>
+                                <span>
+                                    Revocable Trust
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Page Break -->
+        <div class="page-break"></div>
+    </page>
+    <page>
+        <table style="margin-bottom: 30px;" class="info-table">
+            <tbody>
+                <tr class="table-header">
+                    <td class="p-wrapper">
+                        II. Primary Residence Property Information
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <p>Subject Property Address (street, city, state, county, and ZIP code):</p>
+                            <p class="text-area h-35">
+                                Subject Property Address
+                            </p>
+                        </div>
+                        <hr />
+                        <div class="p-wrapper">
+                            <p>Legal Description of Subject Property (attach description if necessary):</p>
+                            <p class="text-area h-35">
+                                Legal Description
+                            </p>
+                        </div>
+                        <hr />
+                        <div class="p-wrapper">
+                            <p>Property Title is Held in These Names (please list all names on property title): </p>
+                            <p class="text-area h-35">
+                                 Property Title List
+                            </p>
+                        </div>
+                        <hr style="margin: 0;" />
+                        <div class="p-wrapper" style="padding: 0;">
+                            <div class="w-3-inline right-border" style="width: 15%;">
+                                <div class="p-wrapper">
+                                    No. of Units:
+                                    <p class="text-area h-15">
+                                        No Units
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="w-3-inline right-border" style="width: 25%;">
+                                <div class="p-wrapper">
+                                    Year Built:
+                                    <p class="text-area h-15">
+                                        Year Built
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="w-3-inline" style="width: 58%;">
+                                <div class="p-wrapper">
+                                    Estimate of Appraised Value:
+                                    <p class="text-area h-15">
+                                        Estimate of Appraised Value
+                                    </p>
                                 </div>
                             </div>
                         </div>
-    </div>
-    </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <div style="display: flex; justify-content: space-between;">
-                <div>
-                    Check if title is also held as:
-                </div>
-                <div class="flex-row">
-                    <div class="bool-input"> </div>
-                    <div>Inter Vivos (Living) Trust </div>
-                </div>
-                <div class="flex-row">
-                    <div class="bool-input"> </div>
-                    <div>Irrevocable Trust
-                    </div>
-                </div>
-            </div>
-            <div class="flex-row" style="margin-left: 70%;">
-                <div class="bool-input"> </div>
-                <div>Irrevocable Trust
-                </div>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
+                        <hr style="margin: 0;">
+                        <div>
+                            <div class="p-wrapper">
+                                <div class="w-3-inline" style="width: 20%;">
+                                    <span>
+                                        Residence <br> Type:
+                                        <span class="float-input">x
+                                        </span>
+                                    </span>
+
+                                </div>
+                                <div class="w-3-inline" style="width: 20%;">
+                                    <span>
+                                        Primary <br> Residence:
+                                    </span>
+                                    <span class="float-input"> 
+                                    </span>
+                                </div>
+                                <div class="w-3-inline" style="width: 58%;">
+                                    <p>
+                                        <span>
+                                            Investment Property
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="p-wrapper">
+                            <div>
+                                <div class="w-4-inline" style="width: 20%;">
+                                    <span>
+                                        Property Title <br> Held As:
+                                    </span>
+                                    <span class="float-input"> 
+                                        
+                                    </span>
+                                </div>
+                                <div class="w-4-inline" style="width: 20%;">
+                                    <span>
+                                        Fee <br> Simple
+                                    </span>
+                                    <span class="float-input">  
+                                    </span>
+                                </div>
+                                <div class="w-4-inline" style="width: 29%;">
+                                    <span>
+                                        Life Estate
+                                    </span>
+                                </div>
+                                <div class="w-4-inline" style="width: 18%;"> 
+                                    <span class="input-1" style="margin-top: 15px;">
+                                    </span>
+                                    <span>
+                                        Leasehold
+                                    </span>
+                                </div>
+                            </div>
+                            <div style="margin-left: 70%;">
+                                <span class="input-1"> 
+                                    
+                                </span>
+                                <span>
+                                    Leasehold Expiration Date
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="p-wrapper">
+                            <div>
+                                <div class="w-3-inline" style="width: 70%;">
+                                    <span>
+                                        Check if title is also held as:
+                                    </span>
+                                    <span class="input-2" style="width: 100px;">  
+                                    </span>
+                                    <i>Inter Vivos</i> (Living) Trust
+                                </div>
+                                <div class="w-3-inline" style="width: 29%;">
+                                    <span class="input-1">  
+                                    </span>
+                                    <span>
+                                        Irrevocable Trust
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div style="margin-left: 70%;">
+                                <span class="input-1">  
+                                </span>
+                                <span>
+                                    Revocable Trust
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Page Break -->
+        <div class="page-break"></div>
+    </page>
+
+
+
 </body>
 
 </html>

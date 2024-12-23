@@ -1,14 +1,14 @@
 {
   "doc": {
-    "borrower": "",
-    "co_borrower": ""
+    "borrower": "Matt Lafoy",
+    "co_borrower": "Miguel"
   },
   "mort": {
-    "sales_contact_price": "",
-    "contact_price": "",
-    "borrower_investment": "",
-    "other_1": "",
-    "other_2": ""
+    "sales_contact_price": "100",
+    "contact_price": "100",
+    "borrower_investment": "100",
+    "other_1": "Other",
+    "other_2": "Other"
   },
   "loan_plan": {
     "line_credit": false,
@@ -51,12 +51,12 @@
   },
 
   "prim_property_info" :  {
-      "subject_prop_addr" : "",
-      "legal_desc" : "",
-      "prop_title_list" : "",
-      "no_units" : "",
-      "year_built" : "",
-      "est_appr_val" : "",
+      "subject_prop_addr" : "Subject Property Address",
+      "legal_desc" : "Legal Description",
+      "prop_title_list" : " Property Title List",
+      "no_units" : "No Units",
+      "year_built" : "Year Built",
+      "est_appr_val" : "Estimate of Appraised Value",
       "primary_resident" : true,
       "investement_resident" : false,
       "prop_title": {
