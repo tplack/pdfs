@@ -3,7 +3,7 @@ from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
 # Function to load JSON data
 def load_json_data(json_file):
-    with open(json_file, 'r') as f:
+    with open(json_file, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 # Function to render HTML from template with Jinja2
@@ -14,14 +14,16 @@ def render_html_from_template(template_file, data):
 
 # Function to save HTML content to a file
 def save_html_to_file(html_content, output_html_file):
-    with open(output_html_file, 'w') as html_file:
+    with open(output_html_file, 'w', encoding='utf-8') as html_file:
         html_file.write(html_content)
 
 # Function to convert HTML to PDF
-def html_to_pdf(output_html_file,output_pdf_file):
-    html = HTML(output_html_file);
-    
-    html.write_pdf(output_pdf_file, )
+def html_to_pdf(output_html_file, output_pdf_file):
+    with open(output_html_file, 'r', encoding='utf-8') as f:
+        html_content = f.read()
+
+    html = HTML(string=html_content)
+    html.write_pdf(output_pdf_file)
     
 
 # Main function to generate the HTML and PDF
