@@ -61,12 +61,30 @@
             margin: 10px 10px 60px 10px;
         }
 
-
         @page {
+            @bottom-center {
+                content: "";
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 10px;
+                color: #000;
+            }
+
+            @bottom-left{
+                content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2AQAAAACkPldwAAAA00lEQVR4nF2RQYrDMAxFv2NDKAScA/QKBQ9ZzCYlPUCPMQcqzIVcshpwcQ4wVyjEtNCNjLqZyGa0ewjp638pBgDkBn/lEalDt3FjCa1nL5z754+7QhjIekHNLp8KI5LnwGFjk0y4Qcl+MNMQmYRnTzO7or+z+tB/u43V44bJ3Mu8Zx04jKV/tAl+X/TjGqc4Fj0MGJ3oKWodulTtczx7UHXfvMYg3FzVweaX+DOWFujc1/l8pbPkhdA94lr8GAAfZMVPo9ff4bPKM5nnZUeL3PfvP2+ZSltSfnxUUQAAAABJRU5ErkJggg==');
+                display: inline-block;
+                width: 50px;  /* Adjust width */
+                height: 50px; /* Adjust height */
+                margin-left: 35%;  /* Space between QR code and text */
+                object-fit: contain;  /* Ensure image fits within dimensions */                
+            }
+
             @bottom-center {
                 content: "Page " counter(page) " of " counter(pages);
                 font-size: 10px;
-                color: #000;
+                font-weight: bold;
+                margin-bottom: 25px;
             }
 
             @bottom-right {
@@ -74,9 +92,20 @@
                 font-size: 10px;
                 font-weight: bold;
                 color: #000;
+                margin-bottom: 25px;
             }
+        }
 
 
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+            font-size: 12px;
         }
 
         .page-break {
@@ -988,12 +1017,8 @@
                 </tr>
             </tbody>
         </table>
-        <!-- Page Break -->
-        <div class="page-break"></div>
+        
     </page>
-
-
-
 </body>
 
 </html>
