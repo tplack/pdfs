@@ -268,7 +268,7 @@
             text-align: left;
         }
 
-        .h-35 {
+        .h-25 {
             height: 25px;
         }
 
@@ -287,6 +287,11 @@
         .margin-left-right {
             margin-top: 15px;
         }
+        .w-2-inline {
+            display: inline-block;
+            width: 50%;
+            vertical-align: top;
+        }
 
         .right-border {
             border-right: 1px solid black;
@@ -296,6 +301,10 @@
             display: inline-block;
             width: 32%;
             vertical-align: top;
+        }
+
+        .line-bottom-spacing {
+            margin-bottom: 5px;
         }
 
         .w-4-inline {
@@ -720,21 +729,21 @@
                     <td>
                         <div class="p-wrapper">
                             <p>Subject Property Address (street, city, state, county, and ZIP code):</p>
-                            <p class="text-area h-35">
+                            <p class="text-area h-25">
                                 {{prim_property_info.subject_prop_addr}}
                             </p>
                         </div>
                         <hr />
                         <div class="p-wrapper">
                             <p>Legal Description of Subject Property (attach description if necessary):</p>
-                            <p class="text-area h-35">
+                            <p class="text-area h-25">
                                 {{prim_property_info.legal_desc}}
                             </p>
                         </div>
                         <hr />
                         <div class="p-wrapper">
                             <p>Property Title is Held in These Names (please list all names on property title): </p>
-                            <p class="text-area h-35">
+                            <p class="text-area h-25">
                                 {{prim_property_info.prop_title_list}}
                             </p>
                         </div>
@@ -879,161 +888,467 @@
         <table style="margin-bottom: 30px;" class="info-table">
             <tbody>
                 <tr class="table-header">
-                    <td class="p-wrapper">
-                        II. Primary Residence Property Information
+                    <td class="p-wrapper" colspan="4">
+                        III. Borrower Information
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Borrower’s Name (include Jr. or Sr., if applicable): </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.borrower_name.name}}
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Co-Borrower’s Name (include Jr. or Sr., if applicable): </p>
+                            <p class="text-area  h-10">
+                                {{borrower_info.co_borrower_name.name}}
+                            </p>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="p-wrapper">
-                            <p>Subject Property Address (street, city, state, county, and ZIP code):</p>
-                            <p class="text-area h-35">
-                                {{prim_property_info.subject_prop_addr}}
+                            <p>Social Security Number:  </p>
+                            <p class="text-area  h-10">
+                                {{borrower_info.borrower_name.social_security_number}}
                             </p>
                         </div>
-                        <hr />
+                    </td>
+                    <td>
                         <div class="p-wrapper">
-                            <p>Legal Description of Subject Property (attach description if necessary):</p>
-                            <p class="text-area h-35">
-                                {{prim_property_info.legal_desc}}
+                            <p>DOB (MM/DD/YYYY): </p>
+                            <p class="text-area  h-10">
+                                {{borrower_info.borrower_name.DOB}}
                             </p>
                         </div>
-                        <hr />
+                    </td>
+                    <td>
                         <div class="p-wrapper">
-                            <p>Property Title is Held in These Names (please list all names on property title): </p>
-                            <p class="text-area h-35">
-                                {{prim_property_info.prop_title_list}}
+                            <p>Social Security Number: </p>
+                            <p class="text-area  h-10">
+                                {{borrower_info.co_borrower_name.social_security_number}}
                             </p>
                         </div>
-                        <hr style="margin: 0;" />
-                        <div class="p-wrapper" style="padding: 0;">
-                            <div class="w-3-inline right-border" style="width: 15%;">
-                                <div class="p-wrapper">
-                                    No. of Units:
-                                    <p class="text-area h-15">
-                                        {{prim_property_info.no_units}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="w-3-inline right-border" style="width: 25%;">
-                                <div class="p-wrapper">
-                                    Year Built:
-                                    <p class="text-area h-15">
-                                        {{prim_property_info.year_built}}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="w-3-inline" style="width: 58%;">
-                                <div class="p-wrapper">
-                                    Estimate of Appraised Value:
-                                    <p class="text-area h-15">
-                                        {{prim_property_info.est_appr_val}}
-                                    </p>
-                                </div>
-                            </div>
+                    </td>
+                    <td>
+                        <div class="p-wrapper">
+                            <p>DOB (MM/DD/YYYY): </p>
+                            <p class="text-area  h-10">
+                                {{borrower_info.co_borrower_name.DOB}}
+                            </p>
                         </div>
-                        <hr style="margin: 0;">
-                        <div>
-                            <div class="p-wrapper">
-                                <div class="w-3-inline" style="width: 20%;">
-                                    <span>
-                                        Residence <br> Type:
-                                        <span class="float-input">{{ 'x' if prim_property_info.primary_resident else ' '
-                                            }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Monthly Income: $  </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.borrower_name.monthly_income}}
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Monthly Income: $  </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.co_borrower_name.monthly_income}}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Real Estate Assets: $  </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.borrower_name.real_estate_assets}}
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Real Estate Assets: $   </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.co_borrower_name.real_estate_assets}}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Available Assets: $    </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.borrower_name.available_assets}}
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Available Assets: $    </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.co_borrower_name.available_assets}}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Home Phone (include area code):    
+                                <span class="text-area">
+                                    {{borrower_info.borrower_name.home_phone}}
+                                </span>
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Home Phone (include area code):    
+                                <span class="text-area">
+                                    {{borrower_info.co_borrower_name.home_phone}}
+                                </span>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Years of Residence at Present Address:     
+                                <span class="text-area">
+                                    {{borrower_info.borrower_name.residence_years}}
+                                </span>
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Years of Residence at Present Address:   
+                                <span class="text-area">
+                                    {{borrower_info.co_borrower_name.residence_years}}
+                                </span>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Mailing Address, if different from Subject Property
+                                Address:     </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.borrower_name.mailing_address}}
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Mailing Address, if different from Subject Property Address:     </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.co_borrower_name.mailing_address}}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Marital Status: </p>
+                            <div style="margin-top: 3px;">
+                                <div class="right-border w-2-inline" style="width: 48%;">
+                                    <div class="line-bottom-spacing">
+                                        <span class="rect-ckbox">
+                                            &nbsp;&nbsp;
                                         </span>
-                                    </span>
-
-                                </div>
-                                <div class="w-3-inline" style="width: 20%;">
-                                    <span>
-                                        Primary <br> Residence:
-                                    </span>
-                                    <span class="float-input">{{ 'x' if prim_property_info.investement_resident else ' '
-                                        }}
-                                    </span>
-                                </div>
-                                <div class="w-3-inline" style="width: 58%;">
-                                    <p>
-                                        <span>
-                                            Investment Property
+                                        <span>Married </span>
+                                    </div>
+                                    <div class="line-bottom-spacing">
+                                        <span class="rect-ckbox">
+                                            &nbsp;&nbsp;
                                         </span>
-                                    </p>
+                                        <span>Separated  </span>
+                                    </div>
+                                </div>
+    
+                                <div class="w-2-inline">
+                                    <span class="rect-ckbox">
+                                        &nbsp;&nbsp;
+                                    </span>
+                                    <span>Unmarried (includes single,
+                                        divorced, widowed)  </span>
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                    </td>
+                    <td colspan="2">
                         <div class="p-wrapper">
-                            <div>
-                                <div class="w-4-inline" style="width: 20%;">
-                                    <span>
-                                        Property Title <br> Held As:
-                                    </span>
-                                    <span class="float-input"> {{ 'x' if prim_property_info.prop_title.fee_sample else '
-                                        ' }}
-                                    </span>
+                            <p>Marital Status: </p>
+                            <div style="margin-top: 3px;">
+                                <div class="right-border w-2-inline" style="width: 48%;">
+                                    <div class="line-bottom-spacing"">
+                                        <span class="rect-ckbox">
+                                            &nbsp;&nbsp;
+                                        </span>
+                                        <span>Married </span>
+                                    </div>
+                                    <div class="line-bottom-spacing">
+                                        <span class="rect-ckbox">
+                                            &nbsp;&nbsp;
+                                        </span>
+                                        <span>Separated  </span>
+                                    </div>
                                 </div>
-                                <div class="w-4-inline" style="width: 20%;">
-                                    <span>
-                                        Fee <br> Simple
+    
+                                <div class="w-2-inline">
+                                    <span class="rect-ckbox">
+                                        &nbsp;&nbsp;
                                     </span>
-                                    <span class="float-input"> {{ 'x' if prim_property_info.prop_title.life_estate else
-                                        ' '
-                                        }}
-                                    </span>
+                                    <span>Unmarried (includes single,
+                                        divorced, widowed)  </span>
                                 </div>
-                                <div class="w-4-inline" style="width: 29%;">
-                                    <span>
-                                        Life Estate
-                                    </span>
-                                </div>
-                                <div class="w-4-inline" style="width: 18%;">{{ 'x' if
-                                    prim_property_info.prop_title.leasehold else ' ' }}
-                                    <span class="input-1" style="margin-top: 15px;">
-                                    </span>
-                                    <span>
-                                        Leasehold
-                                    </span>
-                                </div>
-                            </div>
-                            <div style="margin-left: 70%;">
-                                <span class="input-1"> {{ 'x' if prim_property_info.prop_title.leasehold_exp_date else '
-                                    ' }}
-                                </span>
-                                <span>
-                                    Leasehold Expiration Date
-                                </span>
                             </div>
                         </div>
-                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         <div class="p-wrapper">
-                            <div>
-                                <div class="w-3-inline" style="width: 70%;">
-                                    <span>
-                                        Check if title is also held as:
-                                    </span>
-                                    <span class="input-2" style="width: 100px;"> {{ 'x' if
-                                        prim_property_info.check_title_help.inter_vivos else ' ' }}
-                                    </span>
-                                    <i>Inter Vivos</i> (Living) Trust
-                                </div>
-                                <div class="w-3-inline" style="width: 29%;">
-                                    <span class="input-1"> {{ 'x' if
-                                        prim_property_info.check_title_help.irrevocable_trust else ' ' }}
-                                    </span>
-                                    <span>
-                                        Irrevocable Trust
-                                    </span>
-                                </div>
+                            <p>Alternative Contact Person (name, address, phone): </p>
+                            <p class="text-area h-10">
+                                {{borrower_info.borrower_name.alternative_contact_person}}
+                            </p>
+                        </div>
+                    </td>
+                    <td colspan="2">
+                        <div class="p-wrapper">
+                            <p>Alternative Contact Person (name, address, phone):  </p>
+                            <p class="text-area  h-10">
+                                {{borrower_info.co_borrower_name.alternative_contact_person}}
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="margin-bottom: 30px;" class="info-table">
+            <tbody>
+                <tr class="table-header">
+                    <td class="p-wrapper" colspan="3">
+                        IV. Liens Against The Property
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <p class="p-wrapper">
+                            <i>
+                                List the creditor’s name, address, and account number for all liens against the property.
+                                NOTE: This section should not be used to list all personal liabilities, only liens against the primary residence. For example, federal or state real
+                                estate liens, judgment liens, mechanics liens, and second mortgages should be listed.
+                            </i>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">
+                        <p class="p-wrapper">
+                            Name of Creditor
+                        </p>
+                    </td>
+                    <td style="width: 35%;">
+                        <p class="p-wrapper">
+                            Address of Creditor
+                        </p>
+                    </td>
+                    <td style="width: 35%;">
+                        <p class="p-wrapper">
+                            Unpaid Balance 
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <div class="text-area h-25">
+                                {{liens_against_property.first.name_of_creditor}}
                             </div>
-
-                            <div style="margin-left: 70%;">
-                                <span class="input-1"> {{ 'x' if prim_property_info.check_title_help.revocable_trust
-                                    else ' ' }}
-                                </span>
-                                <span>
-                                    Revocable Trust
-                                </span>
+                        </div>
+                    </td>
+                    <td rowspan="3">
+                        <div class="p-wrapper">
+                            <div class="text-area">
+                                {{liens_against_property.first.address_of_creditor}}
                             </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="p-wrapper" style="padding-top: 10px;">$
+                            <span class="text-area">
+                                {{liens_against_property.first.unpaid_balance1}}
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="p-wrapper">Account Number</p>
+                    </td>
+                    <td rowspan="2">
+                        <div class="p-wrapper">
+                            <div class="text-area">
+                                {{liens_against_property.first.unpaid_balance2}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <div class="text-area h-25">
+                                {{liens_against_property.first.account_number}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">
+                        <p class="p-wrapper">
+                            Name of Creditor
+                        </p>
+                    </td>
+                    <td style="width: 35%;">
+                        <p class="p-wrapper">
+                            Address of Creditor
+                        </p>
+                    </td>
+                    <td style="width: 35%;">
+                        <p class="p-wrapper">
+                            Unpaid Balance 
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <div class="text-area h-25">
+                                {{liens_against_property.second.name_of_creditor}}
+                            </div>
+                        </div>
+                    </td>
+                    <td rowspan="3">
+                        <div class="p-wrapper">
+                            <div class="text-area">
+                                {{liens_against_property.second.address_of_creditor}}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="p-wrapper" style="padding-top: 10px;">$
+                            <span class="text-area">
+                                {{liens_against_property.second.unpaid_balance1}}
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="p-wrapper">Account Number</p>
+                    </td>
+                    <td rowspan="2">
+                        <div class="p-wrapper">
+                            <div class="text-area">
+                                {{liens_against_property.second.unpaid_balance2}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <div class="text-area h-25">
+                                {{liens_against_property.second.account_number}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;">
+                        <p class="p-wrapper">
+                            Name of Creditor
+                        </p>
+                    </td>
+                    <td style="width: 35%;">
+                        <p class="p-wrapper">
+                            Address of Creditor
+                        </p>
+                    </td>
+                    <td style="width: 35%;">
+                        <p class="p-wrapper">
+                            Unpaid Balance 
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <div class="text-area h-25">
+                                {{liens_against_property.third.name_of_creditor}}
+                            </div>
+                        </div>
+                    </td>
+                    <td rowspan="3">
+                        <div class="p-wrapper">
+                            <div class="text-area">
+                                {{liens_against_property.third.address_of_creditor}}
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="p-wrapper" style="padding-top: 10px;">$
+                            <span class="text-area">
+                                {{liens_against_property.third.unpaid_balance1}}
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="p-wrapper">Account Number</p>
+                    </td>
+                    <td rowspan="2">
+                        <div class="p-wrapper">
+                            <div class="text-area">
+                                {{liens_against_property.third.unpaid_balance2}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="p-wrapper">
+                            <div class="text-area h-25">
+                                {{liens_against_property.third.account_number}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="p-wrapper" style="float: right; padding-top: 10px;">
+                            Total Liens to be paid:
+                        </p>
+                    </td>
+                    <td>
+                        <div class="p-wrapper" style="padding-top: 10px;">$
+                            <span class="text-area">
+                                {{liens_against_property.third.total_liens_to_be_paid}}
+                            </span>
                         </div>
                     </td>
                 </tr>

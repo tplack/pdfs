@@ -72,5 +72,58 @@
         "irrevocable_trust" : false,
         "revocable_trust" : false
       }
+  },
+
+  "borrower_info": {
+    "borrower_name": {
+      "name": "",
+      "social_security_number": "",
+      "DOB": "",
+      "monthly_income": "",
+      "real_estate_assets": "",
+      "available_assets": "",
+      "home_phone": "",
+      "residence_years": "",
+      "mailing_address": "",
+      "alternative_contact_person": ""
+    },
+    "co_borrower_name": {
+      "name": "",
+      "social_security_number": "",
+      "DOB": "",
+      "monthly_income": "",
+      "real_estate_assets": "",
+      "available_assets": "",
+      "home_phone": "",
+      "residence_years": "",
+      "mailing_address": "",
+      "alternative_contact_person": ""
+    }
+  
+
+  },
+  "liens_against_property": {
+    "first": {
+      "name_of_creditor": "",
+      "account_number": "",
+      "address_of_creditor": "",
+      "unpaid_balance1": "",
+      "unpaid_balance2": ""
+    },
+    "second": {
+      "name_of_creditor": "",
+      "account_number": "",
+      "address_of_creditor": "",
+      "unpaid_balance1": "",
+      "unpaid_balance2": ""
+    },
+    "third": {
+      "name_of_creditor": "",
+      "account_number": "",
+      "address_of_creditor": "",
+      "unpaid_balance1": "",
+      "unpaid_balance2": ""
+    },
+    "total_liens_to_be_paid": ""
   }
 }
